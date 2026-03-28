@@ -1,4 +1,4 @@
-const SLIDER_DATA = [
+export const SLIDER_DATA = [
     // houses and homes images url with name and id
     {
         id: 1,
