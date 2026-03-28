@@ -20,9 +20,9 @@ export default function Home() {
 
   return <>
     <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
-      <div className="intro min-h-screen flex items-center justify-center">intro</div>
+      <div className="intro min-h-screen flex items-center justify-center">Welcome</div>
       <Hero />
-      <div className="outer min-h-screen flex items-center justify-center">footer</div>
+      <div className="outer min-h-screen flex items-center justify-center">Thankyou</div>
     </ReactLenis>
   </>
 };

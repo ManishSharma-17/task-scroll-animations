@@ -9,17 +9,16 @@ const TOTAL_ROWS = 10;
 
 export default function Hero() {
     const sectionRef = useRef<HTMLDivElement>(null);
-    const rowsRef = useRef<NodeListOf<HTMLDivElement> | null>(null);
     const rowStartWidth = useRef<number>(125);
     const rowEndWidth = useRef<number>(500);
 
     useEffect(() => {
         const section = sectionRef.current;
-        const rows = section?.querySelectorAll('.row');
+        if (!section) return;
 
-        if (!section || !rows || rows.length === 0) return;
+        const rows = Array.from(section.querySelectorAll<HTMLDivElement>('.row'));
 
-        rowsRef.current = rows as NodeListOf<HTMLDivElement>;
+        if (rows.length === 0) return;
 
         const isMobile = window.innerWidth < 768;
         rowStartWidth.current = isMobile ? 250 : 125;
@@ -81,7 +80,7 @@ export default function Hero() {
     return (
         <section ref={sectionRef} className="flex items-center overflow-hidden gap-0.5 flex-col">
             {rowsData.map((row, index) => (
-                <div key={index} ref={rowsRef} className="row flex gap-1 w-[125%]">
+                <div key={index} className="row flex gap-1 w-[125%]">
                     {row.map((item, i) => (
                         <div key={i} className="col flex-1 aspect-7/5">
                             <img src={item.image} alt={item.name} className="h-full object-cover w-full" />
